@@ -68,13 +68,13 @@ export function Param(reserveAsParams) {
 }
 
 export function Request(requestPath, requestMethod) {
-    return function(target, prop, descriptor) {
+    /*return function(target, prop, descriptor) {
         const method = requestMethod || "GET";
         const path = requestPath || prop;
         descriptor.value = function() {
-            /**
+            /!**
              *由于目前JS的尚未支持参数装饰器，因此，函数只能接收一个参数，且该参数必须是对象。
-             */
+             *!/
             //如果参数是多个的话，给出提醒
             if (arguments.length > 1) {
                 throw `can not call this function with argument more than one`;
@@ -132,7 +132,7 @@ export function Request(requestPath, requestMethod) {
             });
         };
         return descriptor;
-    };
+    };*/
 }
 
 export function GET(path) {
@@ -159,12 +159,12 @@ export function PATCH(path) {
     return Request(path, "PATCH");
 }
 
-@Controller('/app')
+/*@Controller('/app')
 export class HomeApi {
 
     @GET('')
     detail(){}
-    /*
+    /!*
     等价于
     detail(params) {
     	return http({
@@ -173,12 +173,12 @@ export class HomeApi {
             params,
         })
     }
-    */
+    *!/
 
     @GET('/list')
     getDataList() {}
 
-    /*
+    /!*
     等价于
     getDataList(params) {
     	return http({
@@ -187,11 +187,11 @@ export class HomeApi {
             params
         })
     }
-    */
+    *!/
 
     @POST('/entity')
     saveEntity() {}
-    /*
+    /!*
     等价于
     saveEntity(data) {
         return http({
@@ -200,12 +200,12 @@ export class HomeApi {
             data
         })
     }
-    */
+    *!/
 
     @GET('/entity')
     @RESTful('/${name}/${age}')
     getEntity(){}
-    /*
+    /!*
     等价于
     getEntity(params = {}){
     	const { name, age, ...rest } = params;
@@ -216,13 +216,13 @@ export class HomeApi {
         });
     }
 
-    */
+    *!/
 
     @GET('/download')
     @ResponseType('blob')
     download(){}
 
-    /*
+    /!*
     等价于
     download() {
     	return http({
@@ -231,14 +231,14 @@ export class HomeApi {
             responseType: 'blob',
         })
     }
-    */
+    *!/
 
     @POST('/create')
     @Headers({
         "Content-Type":"application/json"
     })
     save(){}
-    /*
+    /!*
      等价于
      save() {
      	return http({
@@ -249,13 +249,13 @@ export class HomeApi {
             }
         })
      }
-    */
+    *!/
 
 
     @POST('/submit')
     @Param(['time'])
     submit(){}
-    /*
+    /!*
     等价于
     submit(data = {}) {
     	const { time, ...rest } = data;
@@ -268,5 +268,5 @@ export class HomeApi {
             }
         })
      }
-    */
-}
+    *!/
+}*/

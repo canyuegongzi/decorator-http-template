@@ -1,12 +1,9 @@
-import {Module1} from "./module/Module1";
-import {Module2} from "./module/Module2";
+import HttpTemplate from "./module/HttpTemplate";
 
 function bootstrap() {
-    const module1 = new Module1();
-    const module2 = new Module2();
-    module1.init();
-    console.log(55);
-    module2.init();
+    const http = HttpTemplate({});
+    console.log(http);
+    // console.log(http.httpInstance({}))
 }
 bootstrap();
 
