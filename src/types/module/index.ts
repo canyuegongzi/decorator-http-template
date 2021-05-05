@@ -5,6 +5,8 @@ export const ResMethodKey = Symbol("Res")
 export const ReqMethodQuery = Symbol("Query")
 export const ReqMethodParams = Symbol("Params")
 export const ReqMethodData = Symbol("PostData")
+export const ReqMethodHeaders = Symbol("RequestHeaders")
+export const ReqHttpTransformRequest = Symbol("HttpTransformRequest")
 
 export abstract class CommonHttpTemplate {
 

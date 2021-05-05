@@ -1,7 +1,7 @@
 import {CommonHttpTemplate, CommonHttpTemplateConfig, ErrorType} from "../types/module";
 import axios, {AxiosInstance, AxiosRequestConfig, AxiosResponse} from "axios";
 
-class HttpBaseTemplate extends CommonHttpTemplate {
+export class HttpBaseTemplate extends CommonHttpTemplate {
     public commonHttpTemplateConfig: CommonHttpTemplateConfig;
 
     constructor(props: CommonHttpTemplateConfig) {
@@ -18,7 +18,12 @@ class HttpBaseTemplate extends CommonHttpTemplate {
      */
     public requestInterceptors(instance: AxiosInstance): AxiosInstance {
         instance.interceptors.request.use(
-            (config: AxiosRequestConfig) => this.commonHttpTemplateConfig.requestInterceptors && this.commonHttpTemplateConfig.requestInterceptors(config),
+            (config: AxiosRequestConfig) => {
+                if (this.commonHttpTemplateConfig.requestInterceptors) {
+                    return this.commonHttpTemplateConfig.requestInterceptors(config);
+                }
+                return config;
+            },
             (error: Error) => this.httpError('REQUEST-INTERCEPTORS-ERROR' ,error)
         )
         return instance;
@@ -30,7 +35,12 @@ class HttpBaseTemplate extends CommonHttpTemplate {
      */
     public responseInterceptors(instance: AxiosInstance): AxiosInstance {
         instance.interceptors.response.use(
-            (config: AxiosResponse) => this.commonHttpTemplateConfig.responseInterceptors && this.commonHttpTemplateConfig.responseInterceptors(config),
+            (config: AxiosResponse) => {
+                if (this.commonHttpTemplateConfig.responseInterceptors) {
+                    return this.commonHttpTemplateConfig.responseInterceptors(config);
+                }
+                return config;
+            },
             (error: Error) => this.httpError('PROMISE-HTTP-ERROR' ,error)
         )
         return instance;
