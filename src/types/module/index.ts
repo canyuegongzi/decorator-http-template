@@ -1,5 +1,11 @@
 import {AxiosInstance, AxiosRequestConfig, AxiosResponse} from "axios";
 
+export const HttpKey = Symbol("Http")
+export const ResMethodKey = Symbol("Res")
+export const ReqMethodQuery = Symbol("Query")
+export const ReqMethodParams = Symbol("Params")
+export const ReqMethodData = Symbol("PostData")
+
 export abstract class CommonHttpTemplate {
 
     protected constructor(props: CommonHttpTemplateConfig) {}
