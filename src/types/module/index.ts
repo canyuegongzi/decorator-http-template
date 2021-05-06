@@ -5,8 +5,13 @@ export const ResMethodKey = Symbol("Res")
 export const ReqMethodQuery = Symbol("Query")
 export const ReqMethodParams = Symbol("Params")
 export const ReqMethodData = Symbol("PostData")
+export const ReqMethodKeyData = Symbol("PostKeyData")
+export const ReqMethodKeyParams = Symbol("PostKeyParams")
+export const ReqMethodKeyQuery = Symbol("PostKeyQuery")
 export const ReqMethodHeaders = Symbol("RequestHeaders")
 export const ReqHttpTransformRequest = Symbol("HttpTransformRequest")
+export const ReqHttpBaseUrl = Symbol("HttpBaseUrl")
+export const ResHttpResponseType = Symbol("HttpResponseType")
 
 export abstract class CommonHttpTemplate {
 
@@ -50,3 +55,10 @@ export type HttpTemplateMethod =
     | 'purge' | 'PURGE'
     | 'link' | 'LINK'
     | 'unlink' | 'UNLINK'
+export type ResponseType =
+    | 'arraybuffer'
+    | 'blob'
+    | 'document'
+    | 'json'
+    | 'text'
+    | 'stream'
