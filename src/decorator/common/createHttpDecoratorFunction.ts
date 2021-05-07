@@ -35,12 +35,25 @@ export const createHttpDecoratorFunction = (type: HttpTemplateMethod, url: strin
                 let query: any = {};
                 let params: any = {};
                 let postData: any = {};
+                let httpUrl = url;
                 // path 参数
-                if (reqQueryIndex >= 0) query = getHttpData(type, args[reqQueryIndex], reqQueryKey);
+                if (reqQueryIndex >= 0) {
+                  const dataObj = getHttpData(type, httpUrl, args[reqQueryIndex], reqQueryKey);
+                  query = dataObj.data;
+                  httpUrl = dataObj.httpUrl;
+                }
                 // params 对象
-                if (reqParamsIndex >= 0) params = getHttpData(type, args[reqParamsIndex], reqParamsKey);
+                if (reqParamsIndex >= 0) {
+                    const dataObj = getHttpData(type, httpUrl, args[reqParamsIndex], reqParamsKey);
+                    params = dataObj.data;
+                    httpUrl = dataObj.httpUrl;
+                }
                 // post data数据
-                if (reqDataIndex >= 0) postData = getHttpData(type, args[reqDataIndex], reqDataKey);
+                if (reqDataIndex >= 0) {
+                     const dataObj=  getHttpData(type, httpUrl, args[reqDataIndex], reqDataKey);
+                    postData = dataObj.data
+                    httpUrl = dataObj.httpUrl;
+                }
                 const requestHttpConfig: any = [...requestConfig, ...options]
                 const res: any = await requestData(type, baseUrl ? baseUrl + url: url, { query, params, postData}, requestHttpConfig, reqHttpTransform, responseType)
                 if (isEmptyFunction(method) || resIndex === undefined || resIndex < 0) {
@@ -49,6 +62,7 @@ export const createHttpDecoratorFunction = (type: HttpTemplateMethod, url: strin
                 if (resIndex >= 0) args.splice(resIndex, 1, res)
                 return method.apply(this, args)
             } catch (error) {
+                console.warn(error);
                 throw error
             }
         }
@@ -58,16 +72,18 @@ export const createHttpDecoratorFunction = (type: HttpTemplateMethod, url: strin
 /**
  * 获取请求数据
  * @param type
+ * @param httpUrl
  * @param data
  * @param key
  */
-export const getHttpData = (type: HttpTemplateMethod, data: any, key?: string) => {
+export const getHttpData = (type: HttpTemplateMethod, httpUrl: string, data: any, key?: string) => {
     if(key) {
         const result: any = {};
         result[key] = data[key];
         return result
     }
-    return data;
+    const params = httpUrl.match(/\/:\//g)
+    return {data, httpUrl};
 }
 
 /**
@@ -141,4 +157,8 @@ export function requestData(type, url, data, options, reqHttpTransform, response
             reject(e);
         })
     })
+}
+
+function matchHttpUrl(baseUrl: string, ) {
+
 }

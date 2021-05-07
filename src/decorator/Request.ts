@@ -35,7 +35,7 @@ export function HttpPostData(key?: string) {
     }
 }
 
-export function HttpTransformRequest(transformRequest: () => any) {
+export function HttpTransformRequest(transformRequest: (data: any) => any) {
     return function (target: any, propertyKey: string) {
         Reflect.defineMetadata(ReqHttpTransformRequest, transformRequest, target, propertyKey);
     }

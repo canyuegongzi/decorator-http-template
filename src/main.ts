@@ -18,25 +18,24 @@ function httpTransformRequest(data: any) {
 class Test {
 
     @HttpHeader('Accept: application/json')
-    @HttpGet('', {}, [])
+    @HttpGet('')
     getData(@HttpQuery() query, @HttpRes() res?) {
         return res;
     }
 
     @HttpHeader('Accept: application/json')
-    // @HttpTransformRequest(httpTransformRequest)
-    // @HttpHeader('Content-Type: application/x-www-form-urlencoded')
-    @HttpPost('http://127.0.0.1:3000/login', {}, [])
-    login(@HttpPostData() postData, @HttpRes() res?) {
-        console.log(postData);
+    @HttpBaseUrl('http://127.0.0.1:3000')
+    @HttpPost('/login')
+    @HttpResponseType('document')
+    login1(@HttpPostData('username') postData, @HttpRes() res?) {
         return res;
     }
 
     @HttpHeader('Accept: application/json')
-    @HttpBaseUrl('http://127.0.0.1:3000')
-    @HttpPost('/login', {}, [])
-    @HttpResponseType('document')
-    login1(@HttpPostData('username') postData, @HttpRes() res?) {
+    @HttpTransformRequest(httpTransformRequest)
+    @HttpHeader('Content-Type: application/x-www-form-urlencoded')
+    @HttpPost('http://127.0.0.1:3000/login')
+    login2(@HttpPostData() postData, @HttpRes() res?) {
         return res;
     }
 }
