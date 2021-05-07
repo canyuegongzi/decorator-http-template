@@ -7,9 +7,9 @@ import {
     HttpQuery,
     HttpRes,
     HttpResponseType,
-    HttpTransformRequest
+    HttpTransformRequest,
+    HttpHeader
 } from "./decorator";
-import {HttpHeader} from "./decorator/Headers";
 import Qs from 'qs';
 
 function httpTransformRequest(data: any) {
@@ -23,11 +23,12 @@ class Test {
         return res;
     }
 
-    @HttpHeader('Accept: application/json')
+    @HttpHeader('Content-Type: application/json')
     @HttpBaseUrl('http://127.0.0.1:3000')
     @HttpPost('/login')
     @HttpResponseType('document')
     login1(@HttpPostData('username') postData, @HttpRes() res?) {
+        console.log(res.data);
         return res;
     }
 

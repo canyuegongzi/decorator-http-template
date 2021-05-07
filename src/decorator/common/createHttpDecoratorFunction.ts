@@ -50,12 +50,12 @@ export const createHttpDecoratorFunction = (type: HttpTemplateMethod, url: strin
                 }
                 // post data数据
                 if (reqDataIndex >= 0) {
-                     const dataObj=  getHttpData(type, httpUrl, args[reqDataIndex], reqDataKey);
-                    postData = dataObj.data
+                    const dataObj=  getHttpData(type, httpUrl, args[reqDataIndex], reqDataKey);
                     httpUrl = dataObj.httpUrl;
+                    postData = dataObj.data
                 }
                 const requestHttpConfig: any = [...requestConfig, ...options]
-                const res: any = await requestData(type, baseUrl ? baseUrl + url: url, { query, params, postData}, requestHttpConfig, reqHttpTransform, responseType)
+                const res: any = await requestData(type, baseUrl ? baseUrl + httpUrl: httpUrl, { query, params, postData}, requestHttpConfig, reqHttpTransform, responseType)
                 if (isEmptyFunction(method) || resIndex === undefined || resIndex < 0) {
                     return res;
                 }
@@ -77,12 +77,14 @@ export const createHttpDecoratorFunction = (type: HttpTemplateMethod, url: strin
  * @param key
  */
 export const getHttpData = (type: HttpTemplateMethod, httpUrl: string, data: any, key?: string) => {
+    for (const k in data) {
+        httpUrl.replace(`:${key}`, data[key])
+    }
     if(key) {
         const result: any = {};
         result[key] = data[key];
-        return result
+        return {data: result, httpUrl};
     }
-    const params = httpUrl.match(/\/:\//g)
     return {data, httpUrl};
 }
 
@@ -90,6 +92,7 @@ export const getHttpData = (type: HttpTemplateMethod, httpUrl: string, data: any
  * 获取自定义数据配置
  * @param target
  * @param propertyKey
+ *
  */
 function getMetadata(target: any, propertyKey: string ) {
     const resIndex: number = Reflect.getOwnMetadata(ResMethodKey, target, propertyKey);
