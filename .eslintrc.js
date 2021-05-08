@@ -14,6 +14,8 @@ module.exports = {
   env: {
     node: true,
     jest: true,
+    'shared-node-browser': true,
+    es6: true
   },
   rules: {
     '@typescript-eslint/interface-name-prefix': 'off',

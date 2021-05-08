@@ -5,5 +5,5 @@
   "env": {
     "NODE_ENV": "development"
   },
-  "exec": "ts-node -r tsconfig-paths/register src/main.ts"
+  "exec": "ts-node -r tsconfig-paths/register src/test/test.ts"
 }

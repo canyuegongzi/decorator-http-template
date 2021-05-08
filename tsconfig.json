@@ -13,5 +13,12 @@
     "incremental": true,
     "moduleResolution": "node"
   },
-  "exclude": [ "dist", "node_modules"]
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "**/*.test.ts",
+    "**/*.spec.ts",
+    "/src/test/**.ts"
+  ]
 }

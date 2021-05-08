@@ -1,4 +1,4 @@
-import HttpTemplate from "./module/HttpTemplate";
+/*import HttpTemplate from "../index";
 import {
     HttpBaseUrl,
     HttpGet,
@@ -9,7 +9,8 @@ import {
     HttpResponseType,
     HttpTransformRequest,
     HttpHeader
-} from "./decorator";
+} from "../index";*/
+import HttpTemplate, {HttpBaseUrl, HttpGet, HttpPost, HttpPostData, HttpQuery, HttpRes, HttpResponseType, HttpTransformRequest, HttpHeader } from "@canyuegongzi/decorator-http-template";
 import Qs from 'qs';
 
 function httpTransformRequest(data: any) {

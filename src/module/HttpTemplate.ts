@@ -1,7 +1,7 @@
 import {CommonHttpTemplate, CommonHttpTemplateConfig, ErrorType} from "../types/module";
 import axios, {AxiosInstance, AxiosRequestConfig, AxiosResponse} from "axios";
 
-export class HttpBaseTemplate extends CommonHttpTemplate {
+class HttpBaseTemplate extends CommonHttpTemplate {
     public commonHttpTemplateConfig: CommonHttpTemplateConfig;
 
     constructor(props: CommonHttpTemplateConfig) {
