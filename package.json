@@ -1,6 +1,6 @@
 {
   "name": "@canyuegongzi/decorator-http-template",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -71,12 +71,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/canyuegongzi/t-cli-template.git"
+    "url": "git+https://github.com/canyuegongzi/decorator-http-template.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/canyuegongzi/t-cli-template/issues"
+    "url": "https://github.com/canyuegongzi/decorator-http-template/issues"
   },
-  "homepage": "https://github.com/canyuegongzi/t-cli-template#readme"
+  "homepage": "https://github.com/canyuegongzi/decorator-http-template/blob/master/README.md"
 }
