@@ -1,3 +1,4 @@
+```
 import {HttpBaseUrl, HttpHeader, HttpPost, HttpPostData, HttpRes, HttpResponseType} from "../dist";
 
 describe('header test', function () {
@@ -20,4 +21,5 @@ describe('header test', function () {
         expect(res.data.username === 'userName1').toBe(true);
     });
 })
+```
 
