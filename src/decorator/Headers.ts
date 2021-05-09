@@ -1,6 +1,11 @@
-import {ReqMethodHeaders} from "../types/module";
+import {ReqMethodHeaders} from "../types";
 import 'reflect-metadata';
 
+/**
+ * 请求头部
+ * @param headers<string[] | string>
+ * @constructor
+ */
 export function HttpHeader(headers: string | string[]) {
     return headerDecoratorFactory(headers);
 }

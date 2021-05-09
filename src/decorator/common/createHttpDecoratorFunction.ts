@@ -11,7 +11,7 @@ import {
     ReqMethodKeyData,
     ReqMethodKeyParams,
     ReqMethodKeyQuery, ReqHttpBaseUrl, ResHttpResponseType
-} from "../../types/module";
+} from "../../types";
 import {isEmptyFunction} from "../../utils/check";
 import HttpTemplate from "../../module/HttpTemplate";
 import {AxiosInstance, AxiosResponse} from "axios";

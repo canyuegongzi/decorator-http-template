@@ -1,4 +1,4 @@
-import {CommonHttpTemplate, CommonHttpTemplateConfig, ErrorType} from "../types/module";
+import {CommonHttpTemplate, CommonHttpTemplateConfig, ErrorType} from "../types";
 import axios, {AxiosInstance, AxiosRequestConfig, AxiosResponse} from "axios";
 
 class HttpBaseTemplate extends CommonHttpTemplate {
@@ -67,8 +67,8 @@ class HttpBaseTemplate extends CommonHttpTemplate {
 }
 
 /**
- * http 实例
- * @param config
+ * 构建http 实例
+ * @param config<CommonHttpTemplateConfig> 拦截器 错误捕获等
  * @constructor
  */
 const HttpTemplate = (() => {

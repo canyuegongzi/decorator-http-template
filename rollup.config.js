@@ -60,7 +60,14 @@ const config = {
         }),
         typescript({
             tsconfigOverride: {
-                compilerOptions: { module: 'es2015' }
+                compilerOptions: {
+                  module: 'es2015',
+                  declaration: true,
+                  declarationDir: 'dist'
+                },
+              exclude: [
+                "/src/test/**.ts"
+              ]
             }
         })
     ],
