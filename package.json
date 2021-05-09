@@ -1,6 +1,6 @@
 {
-  "name": "decorator-http-template",
-  "version": "1.0.0",
+  "name": "@canyuegongzi/decorator-http-template",
+  "version": "1.0.1",
   "description": "",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
