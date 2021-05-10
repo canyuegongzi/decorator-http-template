@@ -1,3 +1,30 @@
+## 网络请求装饰器
+### 使用
+
+```
+npm install @canyuegongzi/decorator-http-template
+
+```
+### 方法装饰器列表
+
+* HttpHeader(headers: string | string[])；
+* HttpPost(url: string, data?: any, options?: string[])；
+* HttpGet(url: string, data?: any, options?: string[])；
+* HttpDelete(url: string, data?: any, options?: string[])；
+* HttpOptions(url: string, data?: any, options?: string[])；
+* HttpPatch(url: string, data?: any, options?: string[])；
+* HttpTransformRequest(transformRequest: (data: any) => any)；
+* HttpBaseUrl(baseUrl: string)；
+* HttpResponseType(type?: ResponseType)；
+
+### 参数装饰器
+
+* HttpQuery(key?: string)；
+* HttpParams(key?: string)；
+* HttpPostData(key?: string)；
+* HttpRes()；
+
+
 ```
 import {HttpBaseUrl, HttpHeader, HttpPost, HttpPostData, HttpRes, HttpResponseType} from "../dist";
 

@@ -105,7 +105,7 @@ function getMetadata(target: any, propertyKey: string ) {
     const reqHttpTransform: number = Reflect.getOwnMetadata(ReqHttpTransformRequest, target, propertyKey);
     const baseUrl: string = Reflect.getOwnMetadata(ReqHttpBaseUrl, target, propertyKey);
     const responseType: ResponseType = Reflect.getOwnMetadata(ResHttpResponseType, target, propertyKey);
-    const requestConfig: string[] = Reflect.getOwnMetadata(ReqMethodHeaders, target, propertyKey) || {};
+    const requestConfig: string[] = Reflect.getOwnMetadata(ReqMethodHeaders, target, propertyKey) || [];
     return { reqDataKey, reqParamsKey, responseType, reqQueryKey, baseUrl, reqHttpTransform, requestConfig,reqParamsIndex,reqQueryIndex,resIndex,reqDataIndex}
 }
 
@@ -160,8 +160,4 @@ export function requestData(type, url, data, options, reqHttpTransform, response
             reject(e);
         })
     })
-}
-
-function matchHttpUrl(baseUrl: string, ) {
-
 }
