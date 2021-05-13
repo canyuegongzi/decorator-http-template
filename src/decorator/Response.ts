@@ -1,4 +1,4 @@
-import {ResHttpResponseType, ResMethodKey} from "../types";
+import {ResHttpResponseType, ResMethodKey, ResponseType} from "../types";
 import 'reflect-metadata';
 
 /**
